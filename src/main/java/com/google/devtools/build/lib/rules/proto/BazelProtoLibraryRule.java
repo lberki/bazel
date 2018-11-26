@@ -83,6 +83,8 @@ public final class BazelProtoLibraryRule implements RuleDefinition {
         source.
         <!-- #END_BLAZE_RULE.ATTRIBUTE --> */
         .add(attr("exports", LABEL_LIST).allowedRuleClasses("proto_library").allowedFileTypes())
+        .add(attr("strip_import_prefix", STRING))
+        .add(attr("import_prefix", STRING))
         .advertiseProvider(ProtoInfo.class)
         .build();
   }

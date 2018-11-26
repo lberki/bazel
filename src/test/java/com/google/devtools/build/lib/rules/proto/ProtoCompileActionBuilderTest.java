@@ -101,6 +101,7 @@ public class ProtoCompileActionBuilderTest {
                 new ToolchainInvocation(
                     "dontcare_because_no_plugin", toolchainNoPlugin, "foo.srcjar"),
                 new ToolchainInvocation("pluginName", toolchainWithPlugin, "bar.srcjar")),
+            "bazel-out",
             protoInfo(
                 /* directProtos */ ImmutableList.of(artifact("//:dont-care", "source_file.proto")),
                 /* transitiveProtos */ NestedSetBuilder.create(
@@ -135,6 +136,7 @@ public class ProtoCompileActionBuilderTest {
     CustomCommandLine cmdLine =
         createCommandLineFromToolchains(
             /* toolchainInvocations= */ ImmutableList.of(),
+            "bazel-out",
             protoInfo(
                 /* directProtos */ ImmutableList.of(
                     derivedArtifact("//:dont-care", "source_file.proto")),
@@ -164,6 +166,7 @@ public class ProtoCompileActionBuilderTest {
     CustomCommandLine cmdLine =
         createCommandLineFromToolchains(
             ImmutableList.of(new ToolchainInvocation("dontcare", toolchain, "foo.srcjar")),
+            "bazel-out",
             protoInfo(
                 /* directProtos */ ImmutableList.of(artifact("//:dont-care", "source_file.proto")),
                 /* transitiveProtos */ NestedSetBuilder.create(
@@ -197,6 +200,7 @@ public class ProtoCompileActionBuilderTest {
     CustomCommandLine cmdLine =
         createCommandLineFromToolchains(
             ImmutableList.of(),
+            "bazel-out",
             protoInfo(
                 /* directProtos */ ImmutableList.of(),
                 /* transitiveProtos */ NestedSetBuilder.emptySet(STABLE_ORDER),
@@ -236,6 +240,7 @@ public class ProtoCompileActionBuilderTest {
     CustomCommandLine cmdLine =
         createCommandLineFromToolchains(
             ImmutableList.of(new ToolchainInvocation("pluginName", toolchain, outReplacement)),
+            "bazel-out",
             protoInfo(
                 /* directProtos*/ ImmutableList.of(),
                 /* transitiveProtos */ NestedSetBuilder.emptySet(STABLE_ORDER),
@@ -278,6 +283,7 @@ public class ProtoCompileActionBuilderTest {
           ImmutableList.of(
               new ToolchainInvocation("pluginName", toolchain1, "outReplacement"),
               new ToolchainInvocation("pluginName", toolchain2, "outReplacement")),
+          "bazel-out",
           protoInfo(
               /* directProtos */ ImmutableList.of(),
               /* transitiveProtos */ NestedSetBuilder.emptySet(STABLE_ORDER),
